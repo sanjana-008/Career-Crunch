@@ -1,0 +1,33 @@
+.nav-pills .nav-link {
+    color: #EEEEEE;
+}
+
+/* When you hover */
+.nav-pills .nav-link:hover {
+    background-color: #6C63FF;
+    color: white;
+}
+
+/* Active/current link */
+.nav-pills .nav-link.active {
+    background-color: #6C63FF;
+    color: white;
+}
+#home>.btn:hover{
+    background-color: #6C63FF;
+
+}
+.resume-card:hover {
+    transform: translateY(-8px);
+}
+
+.interview-card:hover {
+    transform: translateY(-8px);
+}
+
+.progress-card:hover {
+    transform: translateY(-8px);
+}
+header {
+    background-color: #213C51;
+}
