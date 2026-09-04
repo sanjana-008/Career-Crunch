@@ -5,34 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Analysis - Career Crunch</title>
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <style>
+        html,
         body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
             background-color: #213C51;
             color: #EEEEEE;
         }
 
-        .sidebar {
-            width: 280px;
-            min-height: 100vh;
-            background-color: #0F3040 !important;
-            border-right: 1px solid #464858;
-        }
-
-        .nav-pills .nav-link {
-            color: #EEEEEE;
-        }
-
-        .nav-pills .nav-link.active {
-            background-color: #6594B1;
-            color: #0F3040;
-            font-weight: 600;
-        }
-
-        .nav-pills .nav-link:hover:not(.active) {
-            background-color: #464858;
-            color: #EEEEEE;
+        main {
+            min-width: 0;
+            flex-grow: 1;
+            height: 100vh;
+            overflow-y: auto;
         }
 
         .card-custom {
@@ -54,39 +48,107 @@
             border-radius: 1rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
         }
+
+        /* Collapsed Sidebar Rules */
+        .sidebar {
+            transition: width 0.25s ease;
+        }
+
+        .sidebar.collapsed {
+            width: 4.5rem !important;
+        }
+
+        /* Center items and hide text when collapsed */
+        .sidebar.collapsed .sidebar-text,
+        .sidebar.collapsed .dropdown-toggle strong,
+        .sidebar.collapsed hr {
+            display: none !important;
+        }
+
+        .sidebar.collapsed .nav-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.75rem 0;
+        }
+
+        .sidebar.collapsed .nav-link i {
+            margin-right: 0 !important;
+            font-size: 1.25rem;
+        }
+
+        .sidebar.collapsed .brand-container {
+            justify-content: center !important;
+        }
+
+        .sidebar.collapsed .dropdown-toggle {
+            justify-content: center !important;
+        }
     </style>
 </head>
 
 <body>
     <div class="d-flex">
+
         <!-- ================= SIDEBAR ================= -->
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <span class="fs-4 fw-bold" style="color: #EEEEEE;">Career Crunch</span>
-            </a>
-            <hr style="border-color: #464858;">
+        <div id="appSidebar" class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
+            style="width: 280px; min-height: 100vh;">
+
+            <!-- Logo & Toggle Button -->
+            <div class="d-flex align-items-center justify-content-between mb-3 brand-container">
+                <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+                    <i class="bi bi-briefcase fs-3 me-2"></i>
+                    <span class="fs-4 sidebar-text">Career Crunch</span>
+                </a>
+                <button id="sidebarToggle" class="btn btn-sm text-white-50 border-0 p-0" title="Toggle Sidebar">
+                    <i class="bi bi-list fs-4"></i>
+                </button>
+            </div>
+
+            <hr>
+
+            <!-- Navigation Links -->
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="/dashboard/main.html" class="nav-link">Dashboard</a>
+                    <a href="/dashboard/main.html" class="nav-link text-white" data-bs-toggle="tooltip"
+                        data-bs-placement="right" title="Dashboard">
+                        <i class="bi bi-house me-2"></i>
+                        <span class="sidebar-text">Dashboard</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link active">Resume Analysis</a>
+                    <a href="#" class="nav-link active" aria-current="page" data-bs-toggle="tooltip"
+                        data-bs-placement="right" title="Resume Analysis">
+                        <i class="bi bi-file-earmark-text me-2"></i>
+                        <span class="sidebar-text">Resume Analysis</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="/dashboard/mock.html" class="nav-link">Mock Interview</a>
+                    <a href="/dashboard/mock.html" class="nav-link text-white" data-bs-toggle="tooltip"
+                        data-bs-placement="right" title="Mock Interview">
+                        <i class="bi bi-chat-square-text me-2"></i>
+                        <span class="sidebar-text">Mock Interview</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="/dashboard/progress.html" class="nav-link">Progress</a>
+                    <a href="/dashboard/progress.html" class="nav-link text-white" data-bs-toggle="tooltip"
+                        data-bs-placement="right" title="Progress">
+                        <i class="bi bi-graph-up me-2"></i>
+                        <span class="sidebar-text">Progress</span>
+                    </a>
                 </li>
             </ul>
-            <hr style="border-color: #464858;">
+
+            <hr>
+
+            <!-- Student Profile Dropdown -->
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="/Images/pfp.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
-                    <strong style="color: #EEEEEE;">Student</strong>
+                    <img src="/Images/pfp.jpg" alt="Student profile" width="32" height="32" class="rounded-circle me-2">
+                    <strong>Student</strong>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" style="background-color: #0F3040;">
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                     <li><a class="dropdown-item" href="#">Settings</a></li>
                     <li><a class="dropdown-item" href="#">Help</a></li>
                     <li>
@@ -98,10 +160,10 @@
         </div>
 
         <!-- ================= MAIN CONTENT ================= -->
-        <main class="flex-grow-1 p-4" style="height: 100vh; overflow-y: auto;">
+        <main class="flex-grow-1 p-4">
             <div class="container py-2">
 
-                <!-- Upload Hero Section (With Image) -->
+                <!-- Upload Hero Section -->
                 <div class="text-center mb-4" id="uploadSection">
                     <h1 class="display-5 fw-bold mb-3" style="color: #EEEEEE;">AI Resume Analysis</h1>
                     <p class="lead col-lg-7 mx-auto mb-4" style="color: #6594B1;">
@@ -124,8 +186,9 @@
                             Select & Upload Resume
                         </button>
                     </div>
-                    <small class="d-block mt-2" style="color: #EEEEEE; opacity: 0.6;">Supported formats: PDF, DOCX (Max
-                        5MB)</small>
+                    <small class="d-block mt-2" style="color: #EEEEEE; opacity: 0.6;">
+                        Supported formats: PDF, DOCX (Max 5MB)
+                    </small>
                 </div>
 
                 <!-- Loading State -->
@@ -186,16 +249,17 @@
         </main>
     </div>
 
+    <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
     <script>
         const fileInput = document.getElementById('resumeFileInput');
         const loadingIndicator = document.getElementById('loadingIndicator');
         const uploadSection = document.getElementById('uploadSection');
         const resultsSection = document.getElementById('resultsSection');
 
-        // Helper function to fill lists and scores
         function populateResults(data) {
             if (data.score) {
                 document.getElementById('scoreBadge').textContent = `Score: ${data.score}`;
@@ -226,7 +290,6 @@
             });
         }
 
-        // Restore saved session if user reloads
         window.addEventListener('DOMContentLoaded', () => {
             const savedData = localStorage.getItem('careerCrunch_resumeData');
             if (savedData) {
@@ -242,7 +305,6 @@
             }
         });
 
-        // File upload handler
         fileInput.addEventListener('change', async function () {
             if (!this.files || this.files.length === 0) return;
 
@@ -282,6 +344,26 @@
                 alert(`Analysis Error: ${err.message}`);
             }
         });
+
+        // Sidebar collapse toggle with localStorage persistence
+        const sidebar = document.getElementById('appSidebar');
+        const toggleBtn = document.getElementById('sidebarToggle');
+
+        if (localStorage.getItem('sidebar_collapsed') === 'true') {
+            sidebar.classList.add('collapsed');
+        }
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('collapsed');
+                const isCollapsed = sidebar.classList.contains('collapsed');
+                localStorage.setItem('sidebar_collapsed', isCollapsed);
+            });
+        }
+
+        // Initialize Bootstrap Tooltips for icon-only mode
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
     </script>
 </body>
 

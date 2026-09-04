@@ -4,28 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Career Crunch</title>
-
+    <title>Career Crunch - Mock Interview</title>
 
     <!-- Bootstrap CSS -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-        crossorigin="anonymous">
-         <style>
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-                overflow-x: hidden;
-            }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-            main {
-                min-width: 0;
-                width: 0;
-            }
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #213C51;
+            color: #EEEEEE;
+        }
+
+        main {
+            min-width: 0;
+            flex-grow: 1;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
         #myCarousel {
             height: 450px;
         }
@@ -37,524 +40,260 @@
         .carousel-item img {
             width: 100%;
             height: 100%;
-            object-fit:cover;
+            object-fit: cover;
+        }
+
+        /* Collapsed Sidebar Rules */
+        .sidebar {
+            transition: width 0.25s ease;
+        }
+
+        .sidebar.collapsed {
+            width: 4.5rem !important;
+        }
+
+        /* Center items and hide text when collapsed */
+        .sidebar.collapsed .sidebar-text,
+        .sidebar.collapsed .dropdown-toggle strong,
+        .sidebar.collapsed hr {
+            display: none !important;
+        }
+
+        .sidebar.collapsed .nav-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.75rem 0;
+        }
+
+        .sidebar.collapsed .nav-link i {
+            margin-right: 0 !important;
+            font-size: 1.25rem;
+        }
+
+        .sidebar.collapsed .brand-container {
+            justify-content: center !important;
+        }
+
+        .sidebar.collapsed .dropdown-toggle {
+            justify-content: center !important;
         }
     </style>
 </head>
 
-<body style="background-color: #FFDD9C !important;">
+<body>
 
     <!-- MAIN FLEX CONTAINER -->
     <div class="d-flex">
 
         <!-- ================= SIDEBAR ================= -->
-
-        <div
-            class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
+        <div id="appSidebar" class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
             style="width: 280px; min-height: 100vh;">
 
-            <!-- Logo / Title -->
-            <a
-                href="/"
-                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-
-                <svg
-                    class="bi pe-none me-2"
-                    width="40"
-                    height="32"
-                    aria-hidden="true">
-
-                    <use xlink:href="#bootstrap"></use>
-
-                </svg>
-
-                <span class="fs-4">
-                    Career Crunch
-                </span>
-
-            </a>
+            <!-- Logo & Toggle Button -->
+            <div class="d-flex align-items-center justify-content-between mb-3 brand-container">
+                <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+                    <i class="bi bi-briefcase fs-3 me-2"></i>
+                    <span class="fs-4 sidebar-text">Career Crunch</span>
+                </a>
+                <button id="sidebarToggle" class="btn btn-sm text-white-50 border-0 p-0" title="Toggle Sidebar">
+                    <i class="bi bi-list fs-4"></i>
+                </button>
+            </div>
 
             <hr>
 
-
-            <!-- Navigation -->
+            <!-- Navigation List -->
             <ul class="nav nav-pills flex-column mb-auto">
-
-                <!-- Dashboard -->
                 <li class="nav-item">
-
-                    <a
-                        href="/dashboard/main.html"
-                        class="nav-link text-white"
-                        aria-current="page">
-
-                        <svg
-                            class="bi pe-none me-2"
-                            width="16"
-                            height="16"
-                            aria-hidden="true">
-
-                            <use xlink:href="#home"></use>
-
-                        </svg>
-
-                        Dashboard
-
+                    <a href="/dashboard/main.html" class="nav-link text-white" data-bs-toggle="tooltip"
+                        data-bs-placement="right" title="Dashboard">
+                        <i class="bi bi-house me-2"></i>
+                        <span class="sidebar-text">Dashboard</span>
                     </a>
-
                 </li>
-
-
-                <!-- Resume Analysis -->
                 <li>
-
-                    <a
-                        href="./Resume_analysis.html"
-                        class="nav-link text-white">
-
-                        <svg
-                            class="bi pe-none me-2"
-                            width="16"
-                            height="16"
-                            aria-hidden="true">
-
-                            <use xlink:href="#speedometer2"></use>
-
-                        </svg>
-
-                        Resume Analysis
-
+                    <a href="./Resume_analysis.html" class="nav-link text-white" data-bs-toggle="tooltip"
+                        data-bs-placement="right" title="Resume Analysis">
+                        <i class="bi bi-file-earmark-text me-2"></i>
+                        <span class="sidebar-text">Resume Analysis</span>
                     </a>
-
                 </li>
-
-
-                <!-- Mock Interview -->
                 <li>
-
-                    <a
-                        href="#"
-                        class="nav-link active">
-
-                        <svg
-                            class="bi pe-none me-2"
-                            width="16"
-                            height="16"
-                            aria-hidden="true">
-
-                            <use xlink:href="#table"></use>
-
-                        </svg>
-
-                        Mock Interview
-
+                    <a href="/dashboard/mock.html" class="nav-link active" data-bs-toggle="tooltip"
+                        data-bs-placement="right" title="Mock Interview">
+                        <i class="bi bi-chat-square-text me-2"></i>
+                        <span class="sidebar-text">Mock Interview</span>
                     </a>
-
                 </li>
-
-
-                <!-- Progress -->
                 <li>
-
-                    <a
-                        href="/dashboard/progress.html"
-                        class="nav-link text-white">
-
-                        <svg
-                            class="bi pe-none me-2"
-                            width="16"
-                            height="16"
-                            aria-hidden="true">
-
-                            <use xlink:href="#grid"></use>
-
-                        </svg>
-
-                        Progress
-
+                    <a href="/dashboard/progress.html" class="nav-link text-white" data-bs-toggle="tooltip"
+                        data-bs-placement="right" title="Progress">
+                        <i class="bi bi-graph-up me-2"></i>
+                        <span class="sidebar-text">Progress</span>
                     </a>
-
                 </li>
-
             </ul>
 
             <hr>
 
-
-            <!-- Student Profile -->
+            <!-- Student Dropdown -->
             <div class="dropdown">
-
-                <a
-                    href="#"
-                    class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">
-
-                    <img
-                        src="/Images/pfp.jpg"
-                        alt="Student profile"
-                        width="32"
-                        height="32"
-                        class="rounded-circle me-2">
-
-                    <strong>
-                        Student
-                    </strong>
-
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="/Images/pfp.jpg" alt="Student profile" width="32" height="32" class="rounded-circle me-2">
+                    <strong>Student</strong>
                 </a>
-
-
-                <!-- Dropdown Menu -->
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-
-                    <li>
-                        <a
-                            class="dropdown-item"
-                            href="#">
-                            Settings
-                        </a>
-                    </li>
-
-                    <li>
-                        <a
-                            class="dropdown-item"
-                            href="#">
-                            Help
-                        </a>
-                    </li>
-
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Help</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-
-                    <li>
-                        <a
-                            class="dropdown-item"
-                            href="#">
-                            Sign out
-                        </a>
-                    </li>
-
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
                 </ul>
-
             </div>
-
         </div>
 
-
         <!-- ================= MAIN CONTENT ================= -->
-
         <main class="flex-grow-1">
 
             <!-- ================= CAROUSEL ================= -->
-
-            <div
-                id="myCarousel"
-                class="carousel slide mb-6"
-                data-bs-ride="carousel">
-
+            <div id="myCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
 
                 <!-- Carousel Indicators -->
                 <div class="carousel-indicators">
-
-                    <button
-                        type="button"
-                        data-bs-target="#myCarousel"
-                        data-bs-slide-to="0"
-                        class="active"
-                        aria-label="Slide 1"
-                        aria-current="true">
-                    </button>
-
-                    <button
-                        type="button"
-                        data-bs-target="#myCarousel"
-                        data-bs-slide-to="1"
-                        aria-label="Slide 2">
-                    </button>
-
-                    <button
-                        type="button"
-                        data-bs-target="#myCarousel"
-                        data-bs-slide-to="2"
-                        aria-label="Slide 3">
-                    </button>
-
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                        aria-label="Slide 1" aria-current="true"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
                 </div>
-
 
                 <!-- Carousel Slides -->
                 <div class="carousel-inner">
 
-
                     <!-- SLIDE 1 -->
                     <div class="carousel-item active">
-
-                       <img
-                        src="/Images/interview_1.jpg"
-                        class="d-block w-100"
-                        alt="Mock interview">
-
-                            <rect
-                                width="100%"
-                                height="100%"
-                                fill="var(--bs-secondary-color)">
-                            </rect>
-
-                        </svg>
-
-
+                        <img src="/Images/interview_1.jpg" class="d-block w-100" alt="Mock interview">
                         <div class="container">
-
                             <div class="carousel-caption text-start">
-
-                                <h1>
-                                    Soft Skills and Reasoning
-                                </h1>
-
+                                <h1>Soft Skills and Reasoning</h1>
                                 <p class="opacity-75">
-                                    Get ur soft skills and logical reasoning tested and be interview ready
+                                    Get your soft skills and logical reasoning tested and be interview ready.
                                 </p>
-
                                 <p>
-
-                                    <a
-                                        class="btn btn-lg btn-primary"
-                                        href="#">
-                                        Get Evaluated
-                                    </a>
-
+                                    <a class="btn btn-lg btn-primary" href="#">Get Evaluated</a>
                                 </p>
-
                             </div>
-
                         </div>
-
                     </div>
-
 
                     <!-- SLIDE 2 -->
                     <div class="carousel-item">
-
-                        <img
-                        src="/Images/interview_3.jpg"
-                        class="d-block w-100"
-                        alt="Mock interview">
-
-                            <rect
-                                width="100%"
-                                height="100%"
-                                fill="var(--bs-secondary-color)">
-                            </rect>
-
-                        </svg>
-
-
+                        <img src="/Images/interview_3.jpg" class="d-block w-100" alt="Mock interview">
                         <div class="container">
-
                             <div class="carousel-caption">
-
-                                <h1 style="color: black;">
-                                    Core Assessment
-                                </h1>
-
+                                <h1 style="color: black;">Core Assessment</h1>
                                 <p style="color: black;">
                                     Test Your Core Skills and Check if you are Placement-Ready
                                 </p>
-
                                 <p>
-
-                                    <a
-                                        class="btn btn-lg btn-primary"
-                                        href="#" >
-                                        Get Started
-                                    </a>
-
+                                    <a class="btn btn-lg btn-primary" href="#">Get Started</a>
                                 </p>
-
                             </div>
-
                         </div>
-
                     </div>
-
 
                     <!-- SLIDE 3 -->
                     <div class="carousel-item">
-
-                        <img
-                        src="/Images/interview_2.png"
-                        class="d-block w-100"
-                        alt="Mock interview">
-
-                            <rect
-                                width="100%"
-                                height=100px
-                                fill="var(--bs-secondary-color)">
-                            </rect>
-
-                        </svg>
-
-
+                        <img src="/Images/interview_2.png" class="d-block w-100" alt="Mock interview">
                         <div class="container">
-
                             <div class="carousel-caption text-end">
-
                                 <h1 style="color: rgb(2, 7, 30);">
                                     Take a look at most popular interview questions from Top Companies
                                 </h1>
-
                                 <p>
-
-                                    <a
-                                        class="btn btn-lg btn-primary"
-                                        href="#">
-                                        Browse the questions
-                                    </a>
-
+                                    <a class="btn btn-lg btn-primary" href="#">Browse the questions</a>
                                 </p>
-
                             </div>
-
                         </div>
-
                     </div>
 
                 </div>
 
-
-                <!-- Previous Button -->
-                <button
-                    class="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#myCarousel"
-                    data-bs-slide="prev">
-
-                    <span
-                        class="carousel-control-prev-icon"
-                        aria-hidden="true">
-                    </span>
-
-                    <span class="visually-hidden">
-                        Previous
-                    </span>
-
+                <!-- Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
                 </button>
-
-
-                <!-- Next Button -->
-                <button
-                    class="carousel-control-next"
-                    type="button"
-                    data-bs-target="#myCarousel"
-                    data-bs-slide="next">
-
-                    <span
-                        class="carousel-control-next-icon"
-                        aria-hidden="true">
-                    </span>
-
-                    <span class="visually-hidden">
-                        Next
-                    </span>
-
+                <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
                 </button>
 
             </div>
-            <div class="row" >
 
-                <div class="col-lg-4">
+            <!-- Feature Highlight Columns -->
+            <div class="container pb-5">
+                <div class="row text-center g-4">
 
-                    <img
-                        src="/Images/growth icon.webp"
-                        alt="Resume Analysis"
-                        width="120"
-                        height="120"
-                        class="rounded-circle" style="border: 3px solid #213C51;">
-                        <title>Placeholder</title>
+                    <div class="col-lg-4">
+                        <img src="/Images/growth icon.webp" alt="Growth" width="120" height="120"
+                            class="rounded-circle mb-3" style="border: 3px solid #213C51; object-fit: cover;">
+                        <h2 class="fw-normal" style="color: #FB6C00;">
+                            Evaluate <br> Your Skills
+                        </h2>
+                    </div>
 
-                        <rect
-                            width="100%"
-                            height="100%"
-                            fill="var(--bs-secondary-color)">
-                        </rect>
+                    <div class="col-lg-4">
+                        <img src="/Images/smileicon.jpg" alt="Confidence" width="120" height="120"
+                            class="rounded-circle mb-3" style="border: 3px solid #FB6C00; object-fit: cover;">
+                        <h2 class="fw-normal" style="color: #FB6C00;">
+                            Boost <br> Confidence
+                        </h2>
+                    </div>
 
-                    </svg>
-
-                    <h2 class="fw-normal" style="color: #FB6C00";>
-                        Evaluate <br>
-                        Your Skills
-                    </h2>
-                </div>
-                <!-- /.col-lg-4 -->
-
-
-                <div class="col-lg-4">
-
-                    <img
-                        src="/Images/smileicon.jpg"
-                        alt="Resume Analysis"
-                        width="120"
-                        height="120"
-                        class="rounded-circle" style="border: 3px solid #FB6C00;">
-
-                        <title>Placeholder</title>
-
-                        <rect
-                            width="100%"
-                            height="100%"
-                            fill="var(--bs-secondary-color)">
-                        </rect>
-
-                    </svg>
-
-                    <h2 class="fw-normal" style="color: #FB6C00";>
-                        Boost <br>
-                        Confidence
-                    </h2>
-
-
-
-                </div>
-                <!-- /.col-lg-4 -->
-
-
-                <div class="col-lg-4">
-
-                     <img
-                        src="/Images/feedbackicon.png"
-                        alt="Resume Analysis"
-                        width="120"
-                        height="120"
-                        class="rounded-circle" style="border: 3px solid #000000;">
-                        <title>Placeholder</title>
-
-                        <rect
-                            width="100%"
-                            height="100%"
-                            fill="var(--bs-secondary-color)">
-                        </rect>
-
-                    </svg>
-
-                    <h2 class="fw-normal" style="color: #FB6C00";>
-                        Constructive <br>
-                        feedback
-                    </h2>
+                    <div class="col-lg-4">
+                        <img src="/Images/feedbackicon.png" alt="Feedback" width="120" height="120"
+                            class="rounded-circle mb-3" style="border: 3px solid #000000; object-fit: cover;">
+                        <h2 class="fw-normal" style="color: #FB6C00;">
+                            Constructive <br> Feedback
+                        </h2>
+                    </div>
 
                 </div>
             </div>
 
         </main>
-
     </div>
 
-
     <!-- Bootstrap JavaScript -->
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous">
+        crossorigin="anonymous"></script>
+
+    <script>
+        // Sidebar collapse toggle with localStorage persistence
+        const sidebar = document.getElementById('appSidebar');
+        const toggleBtn = document.getElementById('sidebarToggle');
+
+        if (localStorage.getItem('sidebar_collapsed') === 'true') {
+            sidebar.classList.add('collapsed');
+        }
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('collapsed');
+                const isCollapsed = sidebar.classList.contains('collapsed');
+                localStorage.setItem('sidebar_collapsed', isCollapsed);
+            });
+        }
+
+        // Initialize tooltips for icon mode
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
     </script>
 
 </body>
