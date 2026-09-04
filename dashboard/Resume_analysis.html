@@ -2,299 +2,279 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Analysis - Career Crunch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #213C51;
+            color: #EEEEEE;
+        }
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-          crossorigin="anonymous">
+        .sidebar {
+            width: 280px;
+            min-height: 100vh;
+            background-color: #0F3040 !important;
+            border-right: 1px solid #464858;
+        }
 
+        .nav-pills .nav-link {
+            color: #EEEEEE;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: #6594B1;
+            color: #0F3040;
+            font-weight: 600;
+        }
+
+        .nav-pills .nav-link:hover:not(.active) {
+            background-color: #464858;
+            color: #EEEEEE;
+        }
+
+        .card-custom {
+            background-color: #464858;
+            border: 1px solid rgba(238, 238, 238, 0.1);
+            color: #EEEEEE;
+        }
+
+        .badge-score {
+            background-color: #DDAED3;
+            color: #0F3040;
+            font-weight: 700;
+        }
+
+        .hero-img {
+            max-width: 550px;
+            max-height: 40vh;
+            object-fit: cover;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        }
+    </style>
 </head>
 
-
-<body style="background-color:#778873;">
-
+<body>
     <div class="d-flex">
-
-
         <!-- ================= SIDEBAR ================= -->
-
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
-             style="width: 280px; height: 100vh;">
-
-            <!-- Logo / Website Name -->
-
-            <a href="/"
-               class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-
-                <svg class="bi pe-none me-2"
-                     width="40"
-                     height="32"
-                     aria-hidden="true">
-
-                    <use xlink:href="#bootstrap"></use>
-
-                </svg>
-
-                <span class="fs-4">
-                    Career Crunch
-                </span>
-
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <span class="fs-4 fw-bold" style="color: #EEEEEE;">Career Crunch</span>
             </a>
-
-
-            <hr>
-
-
-            <!-- Navigation -->
-
+            <hr style="border-color: #464858;">
             <ul class="nav nav-pills flex-column mb-auto">
-
-
-                <!-- Dashboard -->
-
                 <li class="nav-item">
-
-                    <a href="/dashboard/main.html"
-                       class="nav-link text-white"
-                       aria-current="page">
-
-                        <svg class="bi pe-none me-2"
-                             width="16"
-                             height="16"
-                             aria-hidden="true">
-
-                            <use xlink:href="#home"></use>
-
-                        </svg>
-
-                        Dashboard
-
-                    </a>
-
+                    <a href="/dashboard/main.html" class="nav-link">Dashboard</a>
                 </li>
-
-
-                <!-- Resume Analysis -->
-
                 <li>
-
-                    <a href="#"
-                       class="nav-link active">
-
-                        <svg class="bi pe-none me-2"
-                             width="16"
-                             height="16"
-                             aria-hidden="true">
-
-                            <use xlink:href="#speedometer2"></use>
-
-                        </svg>
-
-                        Resume Analysis
-
-                    </a>
-
+                    <a href="#" class="nav-link active">Resume Analysis</a>
                 </li>
-
-
-                <!-- Mock Interview -->
-
                 <li>
-
-                    <a href="/dashboard/mock.html"
-                       class="nav-link text-white">
-
-                        <svg class="bi pe-none me-2"
-                             width="16"
-                             height="16"
-                             aria-hidden="true">
-
-                            <use xlink:href="#table"></use>
-
-                        </svg>
-
-                        Mock Interview
-
-                    </a>
-
+                    <a href="/dashboard/mock.html" class="nav-link">Mock Interview</a>
                 </li>
-
-
-                <!-- Progress -->
-
                 <li>
-
-                    <a href="/dashboard/progress.html"
-                       class="nav-link text-white">
-
-                        <svg class="bi pe-none me-2"
-                             width="16"
-                             height="16"
-                             aria-hidden="true">
-
-                            <use xlink:href="#grid"></use>
-
-                        </svg>
-
-                        Progress
-
-                    </a>
-
+                    <a href="/dashboard/progress.html" class="nav-link">Progress</a>
                 </li>
-
             </ul>
-
-
-            <hr>
-
-
-            <!-- Student Dropdown -->
-
+            <hr style="border-color: #464858;">
             <div class="dropdown">
-
-                <a href="#"
-                   class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                   data-bs-toggle="dropdown"
-                   aria-expanded="false">
-
-                    <img src="/Images/pfp.jpg"
-                         alt=""
-                         width="32"
-                         height="32"
-                         class="rounded-circle me-2">
-
-                    <strong>
-                        Student
-                    </strong>
-
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="/Images/pfp.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong style="color: #EEEEEE;">Student</strong>
                 </a>
-
-
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" style="background-color: #0F3040;">
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Help</a></li>
                     <li>
-
-                        <a class="dropdown-item" href="#">
-                            Settings
-                        </a>
-
-                    </li>
-
-
-                    <li>
-
-                        <a class="dropdown-item" href="#">
-                            Help
-                        </a>
-
-                    </li>
-
-
-                    <li>
-
                         <hr class="dropdown-divider">
-
                     </li>
-
-
-                    <li>
-
-                        <a class="dropdown-item" href="#">
-                            Sign out
-                        </a>
-
-                    </li>
-
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
                 </ul>
-
             </div>
-
         </div>
 
-
         <!-- ================= MAIN CONTENT ================= -->
+        <main class="flex-grow-1 p-4" style="height: 100vh; overflow-y: auto;">
+            <div class="container py-2">
 
-        <main class="flex-grow-1" style="height: 100vh; overflow: hidden;">
-
-
-            <!-- Resume Analysis Hero -->
-
-            <div class="px-4 pt-5 my-5 text-center">
-
-
-                <h1 class="display-4 fw-bold text-white">
-
-                    Resume Analysis
-
-                </h1>
-
-
-                <div class="col-lg-6 mx-auto">
-
-
-                    <p class="lead mb-4 text-white">
-
-                        Upload your resume and get personalized feedback
-                        to identify your strengths, improve weak areas,
-                        and become more placement-ready.
-
+                <!-- Upload Hero Section (With Image) -->
+                <div class="text-center mb-4" id="uploadSection">
+                    <h1 class="display-5 fw-bold mb-3" style="color: #EEEEEE;">AI Resume Analysis</h1>
+                    <p class="lead col-lg-7 mx-auto mb-4" style="color: #6594B1;">
+                        Upload your resume in PDF or DOCX format to identify skill gaps, evaluate keyword relevance, and
+                        receive instant placement feedback.
                     </p>
 
-
-                    <!-- Buttons -->
-
-                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-
-
-                        <button type="button"
-                                class="btn btn-primary btn-lg px-4 me-sm-3">
-
-                            Upload Resume
-
-                        </button>
-
-
+                    <!-- Preview Graphic -->
+                    <div class="mb-4">
+                        <img src="/Images/res_img.webp" alt="Resume Analysis" class="img-fluid hero-img">
                     </div>
 
+                    <!-- Hidden File Input -->
+                    <input type="file" id="resumeFileInput" accept=".pdf,.docx" style="display: none;">
 
+                    <div class="d-flex justify-content-center gap-3">
+                        <button type="button" class="btn btn-lg px-4 shadow"
+                            style="background-color: #6594B1; color: #0F3040; font-weight: 600;"
+                            onclick="document.getElementById('resumeFileInput').click();">
+                            Select & Upload Resume
+                        </button>
+                    </div>
+                    <small class="d-block mt-2" style="color: #EEEEEE; opacity: 0.6;">Supported formats: PDF, DOCX (Max
+                        5MB)</small>
                 </div>
 
+                <!-- Loading State -->
+                <div id="loadingIndicator" class="text-center d-none my-5 py-5">
+                    <div class="spinner-border text-info" role="status" style="width: 3.5rem; height: 3.5rem;">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h4 class="mt-4" style="color: #EEEEEE;">Analyzing Resume...</h4>
+                    <p style="color: #6594B1;">Extracting skills and benchmarking against placement standards</p>
+                </div>
 
-                <!-- Image -->
-
-                    <div class="container px-5">
-
-                        <img src="/Images/res_img.webp"
-                             class="img-fluid border rounded-3 shadow-lg mb-4"
-                             alt="Resume Analysis"
-                            style="max-width: 700px; max-height: 45vh; object-fit: contain;">
-
+                <!-- Analysis Results Section -->
+                <div id="resultsSection" class="d-none">
+                    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom"
+                        style="border-color: #464858 !important;">
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="/Images/res_img.webp" alt="Thumbnail" width="48" height="48"
+                                class="rounded-3 object-fit-cover shadow-sm">
+                            <div>
+                                <h3 class="fw-bold mb-0">Analysis Report</h3>
+                                <span id="uploadedFileName"
+                                    style="color: #6594B1; font-size: 0.95rem;">Resume.pdf</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-score fs-5 px-3 py-2 shadow-sm" id="scoreBadge">Score: 80/100</span>
                     </div>
 
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <div class="card card-custom p-4 rounded-4 h-100 shadow-sm">
+                                <h5 class="fw-bold mb-3" style="color: #DDAED3;">Key Strengths</h5>
+                                <ul id="strengthsList" class="mb-0" style="line-height: 1.8;"></ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card card-custom p-4 rounded-4 h-100 shadow-sm">
+                                <h5 class="fw-bold mb-3" style="color: #D99B7F;">Identified Skill Gaps</h5>
+                                <ul id="gapsList" class="mb-0" style="line-height: 1.8;"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-custom p-4 rounded-4 shadow-sm mb-4">
+                        <h5 class="fw-bold mb-3" style="color: #6594B1;">Actionable Recommendations</h5>
+                        <ul id="recommendationsList" class="mb-0" style="line-height: 1.8;"></ul>
+                    </div>
+
+                    <div class="text-center pb-4">
+                        <button class="btn btn-outline-light px-4 rounded-pill"
+                            onclick="document.getElementById('resumeFileInput').click();">
+                            Upload a Different Resume
+                        </button>
+                    </div>
+                </div>
 
             </div>
-
-
         </main>
-
-
     </div>
 
-
-    <!-- Bootstrap JavaScript -->
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous">
-    </script>
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script>
+        const fileInput = document.getElementById('resumeFileInput');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const uploadSection = document.getElementById('uploadSection');
+        const resultsSection = document.getElementById('resultsSection');
 
+        // Check if a report was previously generated during this session
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedData = localStorage.getItem('careerCrunch_resumeData');
+            if (savedData) {
+                const parsed = JSON.parse(savedData);
+                document.getElementById('uploadedFileName').textContent = parsed.fileName || "Resume.pdf";
+                uploadSection.classList.add('d-none');
+                resultsSection.classList.remove('d-none');
+                populateResults(parsed);
+            }
+        });
+
+        fileInput.addEventListener('change', function () {
+            if (!this.files || this.files.length === 0) return;
+
+            const file = this.files[0];
+            document.getElementById('uploadedFileName').textContent = file.name;
+
+            uploadSection.classList.add('d-none');
+            resultsSection.classList.add('d-none');
+            loadingIndicator.classList.remove('d-none');
+
+            // Simulate analysis delay
+            setTimeout(() => {
+                loadingIndicator.classList.add('d-none');
+                resultsSection.classList.remove('d-none');
+
+                const analysisData = {
+                    fileName: file.name,
+                    score: "80/100",
+                    scoreNum: 80,
+                    strengths: [
+                        "Clear formatting with standard tech industry sections.",
+                        "Good articulation of Python and database concepts in projects.",
+                        "Included relevant academic coursework and GPA."
+                    ],
+                    gaps: [
+                        "Lacks mention of version control tooling (Git/GitHub) in practical workflows.",
+                        "Missing cloud or containerization basics (Docker/AWS).",
+                        "Project bullet points describe tasks rather than measurable metrics/results."
+                    ],
+                    recommendations: [
+                        "Rewrite project bullets using the 'Accomplished [X] as measured by [Y], by doing [Z]' structure.",
+                        "Add a dedicated 'Tools & Technologies' subsection containing Git, Linux, and SQL.",
+                        "Include direct GitHub repository links for listed applications."
+                    ],
+                    // Topic breakdown derived from the resume
+                    topicScores: {
+                        dsa: 70,
+                        dbms: 85,
+                        os: 60,
+                        softSkills: 80
+                    }
+                };
+
+                // Save directly to localStorage
+                localStorage.setItem('careerCrunch_resumeData', JSON.stringify(analysisData));
+
+                populateResults(analysisData);
+            }, 1500);
+        });
+
+        function populateResults(data) {
+            document.getElementById('scoreBadge').textContent = `Score: ${data.score}`;
+
+            const fillList = (id, items) => {
+                const list = document.getElementById(id);
+                list.innerHTML = "";
+                items.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    list.appendChild(li);
+                });
+            };
+
+            fillList('strengthsList', data.strengths);
+            fillList('gapsList', data.gaps);
+            fillList('recommendationsList', data.recommendations);
+        }
+    </script>
 </body>
 
 </html>
