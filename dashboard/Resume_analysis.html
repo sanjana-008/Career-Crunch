@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Analysis - Career Crunch</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+</head>
+
+
+<body style="background-color:#778873;">
+
+    <div class="d-flex">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
+             style="width: 280px; height: 100vh;">
+
+            <!-- Logo / Website Name -->
+
+            <a href="/"
+               class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+
+                <svg class="bi pe-none me-2"
+                     width="40"
+                     height="32"
+                     aria-hidden="true">
+
+                    <use xlink:href="#bootstrap"></use>
+
+                </svg>
+
+                <span class="fs-4">
+                    Career Crunch
+                </span>
+
+            </a>
+
+
+            <hr>
+
+
+            <!-- Navigation -->
+
+            <ul class="nav nav-pills flex-column mb-auto">
+
+
+                <!-- Dashboard -->
+
+                <li class="nav-item">
+
+                    <a href="/dashboard/main.html"
+                       class="nav-link text-white"
+                       aria-current="page">
+
+                        <svg class="bi pe-none me-2"
+                             width="16"
+                             height="16"
+                             aria-hidden="true">
+
+                            <use xlink:href="#home"></use>
+
+                        </svg>
+
+                        Dashboard
+
+                    </a>
+
+                </li>
+
+
+                <!-- Resume Analysis -->
+
+                <li>
+
+                    <a href="#"
+                       class="nav-link active">
+
+                        <svg class="bi pe-none me-2"
+                             width="16"
+                             height="16"
+                             aria-hidden="true">
+
+                            <use xlink:href="#speedometer2"></use>
+
+                        </svg>
+
+                        Resume Analysis
+
+                    </a>
+
+                </li>
+
+
+                <!-- Mock Interview -->
+
+                <li>
+
+                    <a href="/dashboard/mock.html"
+                       class="nav-link text-white">
+
+                        <svg class="bi pe-none me-2"
+                             width="16"
+                             height="16"
+                             aria-hidden="true">
+
+                            <use xlink:href="#table"></use>
+
+                        </svg>
+
+                        Mock Interview
+
+                    </a>
+
+                </li>
+
+
+                <!-- Progress -->
+
+                <li>
+
+                    <a href="/dashboard/progress.html"
+                       class="nav-link text-white">
+
+                        <svg class="bi pe-none me-2"
+                             width="16"
+                             height="16"
+                             aria-hidden="true">
+
+                            <use xlink:href="#grid"></use>
+
+                        </svg>
+
+                        Progress
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <hr>
+
+
+            <!-- Student Dropdown -->
+
+            <div class="dropdown">
+
+                <a href="#"
+                   class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false">
+
+                    <img src="/Images/pfp.jpg"
+                         alt=""
+                         width="32"
+                         height="32"
+                         class="rounded-circle me-2">
+
+                    <strong>
+                        Student
+                    </strong>
+
+                </a>
+
+
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+
+                    <li>
+
+                        <a class="dropdown-item" href="#">
+                            Settings
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a class="dropdown-item" href="#">
+                            Help
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <hr class="dropdown-divider">
+
+                    </li>
+
+
+                    <li>
+
+                        <a class="dropdown-item" href="#">
+                            Sign out
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main class="flex-grow-1" style="height: 100vh; overflow: hidden;">
+
+
+            <!-- Resume Analysis Hero -->
+
+            <div class="px-4 pt-5 my-5 text-center">
+
+
+                <h1 class="display-4 fw-bold text-white">
+
+                    Resume Analysis
+
+                </h1>
+
+
+                <div class="col-lg-6 mx-auto">
+
+
+                    <p class="lead mb-4 text-white">
+
+                        Upload your resume and get personalized feedback
+                        to identify your strengths, improve weak areas,
+                        and become more placement-ready.
+
+                    </p>
+
+
+                    <!-- Buttons -->
+
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+
+
+                        <button type="button"
+                                class="btn btn-primary btn-lg px-4 me-sm-3">
+
+                            Upload Resume
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- Image -->
+
+                    <div class="container px-5">
+
+                        <img src="/Images/res_img.webp"
+                             class="img-fluid border rounded-3 shadow-lg mb-4"
+                             alt="Resume Analysis"
+                            style="max-width: 700px; max-height: 45vh; object-fit: contain;">
+
+                    </div>
+
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+    <!-- Bootstrap JavaScript -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>
