@@ -1,170 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
-<body>
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
-     style="width: 280px; height:100vh;">
-
-    <a href="/"
-       class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-
-        <svg class="bi pe-none me-2"
-             width="40"
-             height="32"
-             aria-hidden="true">
-
-            <use xlink:href="#bootstrap"></use>
-
-        </svg>
-
-        <span class="fs-4">
-            Career Crunch
-        </span>
-
-    </a>
-
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-
-        <li class="nav-item">
-
-            <a href="/dashboard/main.html"
-               class="nav-link text-white"
-               aria-current="page">
-
-                <svg class="bi pe-none me-2"
-                     width="16"
-                     height="16"
-                     aria-hidden="true">
-
-                    <use xlink:href="#home"></use>
-
-                </svg>
-
-                DashBoard
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="./Resume_analysis.html"
-               class="nav-link text-white">
-
-                <svg class="bi pe-none me-2"
-                     width="16"
-                     height="16"
-                     aria-hidden="true">
-
-                    <use xlink:href="#speedometer2"></use>
-
-                </svg>
-
-                Resume Analysis
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="/dashboard/mock.html"
-               class="nav-link text-white">
-
-                <svg class="bi pe-none me-2"
-                     width="16"
-                     height="16"
-                     aria-hidden="true">
-
-                    <use xlink:href="#table"></use>
-
-                </svg>
-
-                Mock Interview
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="#"
-               class="nav-link active">
-
-                <svg class="bi pe-none me-2"
-                     width="16"
-                     height="16"
-                     aria-hidden="true">
-
-                    <use xlink:href="#grid"></use>
-
-                </svg>
-
-                Progress
-
-            </a>
-
-        </li>
-
-    </ul>
-
-    <hr>
-
-    <div class="dropdown">
-
-        <a href="#"
-           class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-           data-bs-toggle="dropdown"
-           aria-expanded="false">
-
-            <img src="/Images/pfp.jpg"
-                 alt=""
-                 width="32"
-                 height="32"
-                 class="rounded-circle me-2">
-
-            <strong>
-                Student
-            </strong>
-
-        </a>
-
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-
-            <li>
-                <a class="dropdown-item" href="#">
-                    Settings
-                </a>
-            </li>
-
-            <li>
-                <a class="dropdown-item" href="#">
-                    Help
-                </a>
-            </li>
-
-            <li>
-                <hr class="dropdown-divider">
-            </li>
-
-            <li>
-                <a class="dropdown-item" href="#">
-                    Sign out
-                </a>
-            </li>
-
-        </ul>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -221,23 +54,7 @@
         /* Progress Bars */
         .progress {
             background-color: #0F3040;
-            height: 12px;
-        }
-
-        .bar-blue {
-            background-color: #6594B1;
-        }
-
-        .bar-lilac {
-            background-color: #DDAED3;
-        }
-
-        .bar-peach {
-            background-color: #D99B7F;
-        }
-
-        .bar-terracotta {
-            background-color: #A56F63;
+            height: 10px;
         }
     </style>
 </head>
@@ -287,16 +104,18 @@
             <div class="container-fluid">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h2 class="fw-bold" style="color: #EEEEEE;">Your Progress Overview</h2>
-                    <span class="badge badge-status px-3 py-2 fs-6">Placement Status: Pending Evaluation</span>
+                    <span class="badge badge-status px-3 py-2 fs-6" id="statusBadge">Placement Status: Pending
+                        Evaluation</span>
                 </div>
 
-                <!-- Blank / Initial Metric Cards -->
+                <!-- Metric Cards -->
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
                         <div class="card card-custom p-3 rounded-4 shadow-sm">
                             <h6 style="color: #6594B1;">Resume Quality Index</h6>
-                            <h2 class="fw-bold my-2" style="color: #DDAED3;">--</h2>
-                            <small style="color: #EEEEEE; opacity: 0.7;">Upload a resume to calculate score</small>
+                            <h2 class="fw-bold my-2" id="resumeScoreDisplay" style="color: #DDAED3;">--</h2>
+                            <small id="resumeScoreSub" style="color: #EEEEEE; opacity: 0.7;">Upload a resume to
+                                calculate score</small>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -317,61 +136,33 @@
 
                 <!-- Performance Breakdown -->
                 <div class="row g-4">
-                    <!-- Blank Line Chart -->
+                    <!-- Readiness Line Chart -->
                     <div class="col-lg-7">
                         <div class="card card-custom p-4 rounded-4 shadow-sm h-100">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h5 class="fw-bold mb-0" style="color: #EEEEEE;">Score Trajectory Over Time</h5>
-                                <small style="color: #EEEEEE; opacity: 0.6;">Awaiting first assessment</small>
+                                <small id="chartSubtitle" style="color: #EEEEEE; opacity: 0.6;">Awaiting first
+                                    assessment</small>
                             </div>
                             <canvas id="performanceChart" height="150"></canvas>
                         </div>
                     </div>
 
-                    <!-- Reset Progress Bars (0%) -->
+                    <!-- Dynamic Role-Specific Subject Mastery -->
                     <div class="col-lg-5">
                         <div class="card card-custom p-4 rounded-4 shadow-sm h-100">
-                            <h5 class="fw-bold mb-3" style="color: #EEEEEE;">Target Subject Mastery</h5>
-
-                            <div class="mb-3">
-                                <div class="d-flex justify-content-between mb-1">
-                                    <span>Data Structures & Algorithms</span>
-                                    <span style="color: #6594B1;">--</span>
-                                </div>
-                                <div class="progress rounded-pill">
-                                    <div class="progress-bar bar-blue" role="progressbar" style="width: 0%;"></div>
-                                </div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="fw-bold mb-0" style="color: #EEEEEE;">Target Subject Mastery</h5>
+                                <span class="badge rounded-pill px-3 py-1" id="detectedDomainBadge"
+                                    style="background-color: #213C51; color: #6594B1; border: 1px solid #6594B1; font-size: 0.75rem;">
+                                    Domain: General
+                                </span>
                             </div>
 
-                            <div class="mb-3">
-                                <div class="d-flex justify-content-between mb-1">
-                                    <span>DBMS & SQL Queries</span>
-                                    <span style="color: #DDAED3;">--</span>
-                                </div>
-                                <div class="progress rounded-pill">
-                                    <div class="progress-bar bar-lilac" role="progressbar" style="width: 0%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <div class="d-flex justify-content-between mb-1">
-                                    <span>Operating Systems & Threads</span>
-                                    <span style="color: #D99B7F;">--</span>
-                                </div>
-                                <div class="progress rounded-pill">
-                                    <div class="progress-bar bar-peach" role="progressbar" style="width: 0%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <div class="d-flex justify-content-between mb-1">
-                                    <span>Logical Reasoning & Soft Skills</span>
-                                    <span style="color: #A56F63;">--</span>
-                                </div>
-                                <div class="progress rounded-pill">
-                                    <div class="progress-bar bar-terracotta" role="progressbar" style="width: 0%;">
-                                    </div>
-                                </div>
+                            <div id="subjectMasteryContainer" class="d-flex flex-column gap-3">
+                                <p class="text-secondary small mb-0 py-4 text-center">
+                                    Upload a resume to automatically extract role-specific subject mastery bars.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -380,12 +171,15 @@
         </main>
     </div>
 
-    <!-- Bootstrap Bundle & Chart.js Config -->
+    <!-- Bootstrap Bundle & Dynamic Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script>
-        // Initialize empty baseline chart
+        // Palette cycle for progress bars
+        const BAR_COLORS = ['#6594B1', '#DDAED3', '#D99B7F', '#A56F63'];
+
+        // Initialize Baseline Chart
         const ctx = document.getElementById('performanceChart').getContext('2d');
         const performanceChart = new Chart(ctx, {
             type: 'line',
@@ -422,41 +216,71 @@
             }
         });
 
-        // Sync with localStorage on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            const rawData = localStorage.getItem('careerCrunch_resumeData');
-            if (!rawData) return; // Keep blank/zero state if no resume uploaded yet
-
-            const data = JSON.parse(rawData);
-
-            // 1. Update status badge
-            const statusBadge = document.querySelector('.badge-status');
+        function updateProgressDashboard(data) {
+            // 1. Update Placement Status Badge
+            const statusBadge = document.getElementById('statusBadge');
             if (statusBadge) {
                 statusBadge.textContent = "Placement Status: Resume Evaluated";
             }
 
-            // 2. Update Resume Quality Index card
-            const resumeScoreCard = document.querySelector('.col-md-4:nth-child(1) h2');
-            const resumeScoreSub = document.querySelector('.col-md-4:nth-child(1) small');
-            if (resumeScoreCard) resumeScoreCard.textContent = `${data.scoreNum}%`;
-            if (resumeScoreSub) resumeScoreSub.textContent = `Based on ${data.fileName}`;
-
-            // 3. Update Progress Bars and Percent Text
-            const updateBar = (index, percent, textElem) => {
-                const bar = document.querySelectorAll('.progress-bar')[index];
-                if (bar) bar.style.width = `${percent}%`;
-                if (textElem) textElem.textContent = `${percent}%`;
-            };
-
-            const masteryPercents = document.querySelectorAll('.col-lg-5 .d-flex span:nth-child(2)');
-            if (data.topicScores) {
-                updateBar(0, data.topicScores.dsa, masteryPercents[0]);
-                updateBar(1, data.topicScores.dbms, masteryPercents[1]);
-                updateBar(2, data.topicScores.os, masteryPercents[2]);
-                updateBar(3, data.topicScores.softSkills, masteryPercents[3]);
+            // 2. Update Domain Badge
+            const domainBadge = document.getElementById('detectedDomainBadge');
+            if (domainBadge && data.domain) {
+                domainBadge.textContent = `Domain: ${data.domain}`;
             }
 
-            // 4. Update the Chart to show the first benchmark point
+            // 3. Update Resume Score Card
+            const scoreDisplay = document.getElementById('resumeScoreDisplay');
+            const scoreSub = document.getElementById('resumeScoreSub');
+            if (scoreDisplay) scoreDisplay.textContent = `${data.scoreNum || '--'}%`;
+            if (scoreSub) scoreSub.textContent = `Based on ${data.fileName || 'uploaded resume'}`;
+
+            // 4. Populate Dynamic Subject Mastery Bars
+            const container = document.getElementById('subjectMasteryContainer');
+            if (container && data.topicScores) {
+                container.innerHTML = '';
+
+                // Support both dynamic arrays: [{topic, score}] and legacy objects: {dsa: 70, dbms: 80}
+                let topics = [];
+                if (Array.isArray(data.topicScores)) {
+                    topics = data.topicScores;
+                } else if (typeof data.topicScores === 'object') {
+                    const labelMap = {
+                        dsa: 'Data Structures & Algorithms',
+                        dbms: 'DBMS & SQL Queries',
+                        os: 'Operating Systems & Threads',
+                        softSkills: 'Logical Reasoning & Soft Skills'
+                    };
+                    topics = Object.entries(data.topicScores).map(([k, v]) => ({
+                        topic: labelMap[k] || k.toUpperCase(),
+                        score: v
+                    }));
+                }
+
+                topics.forEach((item, index) => {
+                    const color = BAR_COLORS[index % BAR_COLORS.length];
+                    const barHtml = `
+                        <div>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="fw-medium small" style="color: #EEEEEE;">${item.topic}</span>
+                                <span class="fw-bold small" style="color: ${color};">${item.score}%</span>
+                            </div>
+                            <div class="progress rounded-pill">
+                                <div class="progress-bar rounded-pill" role="progressbar"
+                                    style="width: ${item.score}%; background-color: ${color};"
+                                    aria-valuenow="${item.score}" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.insertAdjacentHTML('beforeend', barHtml);
+                });
+            }
+
+            // 5. Update Chart Benchmark Point
+            const chartSub = document.getElementById('chartSubtitle');
+            if (chartSub) chartSub.textContent = "Initial benchmark established";
+
             performanceChart.data.datasets[0] = {
                 label: 'Readiness Score',
                 data: [data.scoreNum, null, null, null, null, null],
@@ -467,9 +291,22 @@
                 pointBackgroundColor: '#DDAED3',
                 pointBorderColor: '#0F3040',
                 pointRadius: 6,
-                borderDash: [] // solid line
+                borderDash: []
             };
             performanceChart.update();
+        }
+
+        // Load persisted analysis on startup
+        window.addEventListener('DOMContentLoaded', () => {
+            const rawData = localStorage.getItem('careerCrunch_resumeData');
+            if (!rawData) return;
+
+            try {
+                const parsed = JSON.parse(rawData);
+                updateProgressDashboard(parsed);
+            } catch (err) {
+                console.error("Error loading cached resume progress:", err);
+            }
         });
     </script>
 </body>
