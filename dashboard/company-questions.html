@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Company Technical Interview Questions - Career Crunch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #213C51;
+            color: #EEEEEE;
+        }
+
+        .card-custom {
+            background-color: #464858;
+            border: 1px solid rgba(238, 238, 238, 0.1);
+            color: #EEEEEE;
+        }
+
+        .badge-cat {
+            background-color: #6594B1;
+            color: #0F3040;
+            font-weight: 700;
+        }
+
+        .accordion-button {
+            background-color: #37536d !important;
+            color: #EEEEEE !important;
+            font-weight: 600;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #0F3040 !important;
+            color: #DDAED3 !important;
+        }
+
+        .accordion-body {
+            background-color: #464858;
+            color: #EEEEEE;
+        }
+
+        .q-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 0;
+        }
+
+        .q-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body class="p-3 p-md-5">
+    <div class="container" style="max-width: 980px;">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <a href="./mock.html" class="btn btn-sm btn-outline-light mb-2">
+                    <i class="bi bi-arrow-left me-1"></i> Back to Mock Interview
+                </a>
+                <h2 class="fw-bold mb-1">Top Company Technical Interview Questions</h2>
+                <p class="text-white-50">Curated technical assessment question bank across algorithms, core
+                    fundamentals, and system reasoning.</p>
+            </div>
+            <span class="badge badge-cat px-3 py-2 fs-6 d-none d-md-block">Curated Tech Bank</span>
+        </div>
+
+        <!-- Accordion container containing Sections A through F from PDF -->
+        <div class="accordion accordion-flush rounded-4 overflow-hidden shadow-lg" id="techQuestionsAccordion">
+
+            <!-- Section A -->
+            <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#secA">
+                        <i class="bi bi-code-slash me-2 text-info"></i> Section A: Programming & Problem-Solving
+                    </button>
+                </h2>
+                <div id="secA" class="accordion-collapse collapse show" data-bs-parent="#techQuestionsAccordion">
+                    <div class="accordion-body">
+                        <div class="q-item">
+                            <strong>1. First Non-Repeating Element:</strong> Given an array of integers, how would you
+                            find the first non-repeating element? Explain your approach and its time complexity.
+                        </div>
+                        <div class="q-item">
+                            <strong>2. Linked List Cycle Detection:</strong> How would you determine whether a linked
+                            list contains a cycle without using extra memory?
+                        </div>
+                        <div class="q-item">
+                            <strong>3. Reverse a Linked List:</strong> Reverse a linked list. Can you solve it
+                            iteratively and recursively? What are the trade-offs?
+                        </div>
+                        <div class="q-item">
+                            <strong>4. In-Place Palindrome Check:</strong> Given a string, determine whether it is a
+                            palindrome without using an additional string.
+                        </div>
+                        <div class="q-item">
+                            <strong>5. Two Sum:</strong> Given an array, find two elements whose sum equals a given
+                            target. Explain both a brute-force and optimized approach.
+                        </div>
+                        <div class="q-item">
+                            <strong>6. Single-Pass Second Largest:</strong> How would you find the second-largest
+                            element in an array in one pass?
+                        </div>
+                        <div class="q-item">
+                            <strong>7. Algorithmic Optimization:</strong> How would you investigate whether an $O(n^2)$
+                            algorithm can be optimized to $O(n \log n)$ or $O(n)$?
+                        </div>
+                        <div class="q-item">
+                            <strong>8. Complexity Trade-Offs:</strong> Why is understanding time and space complexity
+                            important when choosing an algorithm?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section B -->
+            <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#secB">
+                        <i class="bi bi-boxes me-2 text-warning"></i> Section B: OOP & Programming Fundamentals
+                    </button>
+                </h2>
+                <div id="secB" class="accordion-collapse collapse" data-bs-parent="#techQuestionsAccordion">
+                    <div class="accordion-body">
+                        <div class="q-item">
+                            <strong>1. Four Pillars of OOP:</strong> Explain encapsulation, inheritance, polymorphism,
+                            and abstraction with a practical example.
+                        </div>
+                        <div class="q-item">
+                            <strong>2. Polymorphism Types:</strong> What is the difference between compile-time and
+                            runtime polymorphism?
+                        </div>
+                        <div class="q-item">
+                            <strong>3. Composition vs Inheritance:</strong> Why is composition sometimes preferred over
+                            inheritance?
+                        </div>
+                        <div class="q-item">
+                            <strong>4. Abstract Class vs Interface:</strong> What is the difference between an abstract
+                            class and an interface? When would you choose one over the other?
+                        </div>
+                        <div class="q-item">
+                            <strong>5. Object Lifecycle in Memory:</strong> What happens when you create an object in
+                            memory? Explain the process conceptually.
+                        </div>
+                        <div class="q-item">
+                            <strong>6. Shallow vs Deep Copy:</strong> What is the difference between shallow copy and
+                            deep copy? Give a situation where shallow copying causes a problem.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section C -->
+            <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#secC">
+                        <i class="bi bi-database me-2 text-danger"></i> Section C: DBMS & SQL
+                    </button>
+                </h2>
+                <div id="secC" class="accordion-collapse collapse" data-bs-parent="#techQuestionsAccordion">
+                    <div class="accordion-body">
+                        <div class="q-item">
+                            <strong>1. Database Normalization:</strong> What is normalization? Why do we need it?
+                            Explain 1NF, 2NF, and 3NF.
+                        </div>
+                        <div class="q-item">
+                            <strong>2. Database Keys:</strong> What is the difference between a primary key, candidate
+                            key, super key, and foreign key?
+                        </div>
+                        <div class="q-item">
+                            <strong>3. SQL Joins:</strong> Explain INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL OUTER
+                            JOIN with an example.
+                        </div>
+                        <div class="q-item">
+                            <strong>4. ACID Guarantees:</strong> What are ACID properties? Why are they important in
+                            database transactions?
+                        </div>
+                        <div class="q-item">
+                            <strong>5. Query Bottleneck Debugging:</strong> Suppose a database query is taking 10
+                            seconds. How would you systematically identify and improve the bottleneck?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section D -->
+            <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#secD">
+                        <i class="bi bi-cpu me-2 text-success"></i> Section D: Operating Systems
+                    </button>
+                </h2>
+                <div id="secD" class="accordion-collapse collapse" data-bs-parent="#techQuestionsAccordion">
+                    <div class="accordion-body">
+                        <div class="q-item">
+                            <strong>1. Process vs Thread:</strong> What is the difference between a process and a
+                            thread? When would you use multiple threads?
+                        </div>
+                        <div class="q-item">
+                            <strong>2. Deadlock & 4 Coffman Conditions:</strong> What is a deadlock? Explain the four
+                            necessary conditions for deadlock.
+                        </div>
+                        <div class="q-item">
+                            <strong>3. Memory Architecture:</strong> What is the difference between paging and
+                            segmentation?
+                        </div>
+                        <div class="q-item">
+                            <strong>4. Program Execution Lifecycle:</strong> What happens internally when you run a
+                            program from your computer? Explain the journey from executable to CPU execution.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section E -->
+            <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#secE">
+                        <i class="bi bi-diagram-3 me-2 text-primary"></i> Section E: Computer Networks
+                    </button>
+                </h2>
+                <div id="secE" class="accordion-collapse collapse" data-bs-parent="#techQuestionsAccordion">
+                    <div class="accordion-body">
+                        <div class="q-item">
+                            <strong>1. Transport Protocols (TCP vs UDP):</strong> Explain the difference between TCP and
+                            UDP. When would you choose UDP despite TCP being more reliable?
+                        </div>
+                        <div class="q-item">
+                            <strong>2. Browser URL Journey:</strong> What happens when you type a URL such as
+                            https://google.com into a browser and press Enter?
+                        </div>
+                        <div class="q-item">
+                            <strong>3. Security Layers (HTTP vs HTTPS):</strong> What is the difference between HTTP and
+                            HTTPS? What exactly does HTTPS protect?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section F -->
+            <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#secF">
+                        <i class="bi bi-lightbulb me-2 text-warning"></i> Section F: Reasoning & Deeper Problem Solving
+                    </button>
+                </h2>
+                <div id="secF" class="accordion-collapse collapse" data-bs-parent="#techQuestionsAccordion">
+                    <div class="accordion-body">
+                        <div class="q-item">
+                            <strong>1. The 8 Identical Balls Puzzle:</strong> You have 8 identical-looking balls. One is
+                            heavier than the others. You have a balance scale and can use it only twice. How do you
+                            identify the heavier ball?
+                        </div>
+                        <div class="q-item">
+                            <strong>2. Practical Runtime Selection:</strong> You have two algorithms: Algorithm A is
+                            $O(n^2)$ and Algorithm B is $O(n \log n)$. For small inputs, A performs better. Which
+                            algorithm would you choose in a real application, and what additional factors would you
+                            consider?
+                        </div>
+                        <div class="q-item">
+                            <strong>3. Systematic 99% Edge-Case Debugging:</strong> A program works correctly for 99% of
+                            inputs, but fails for certain cases. You don't know which inputs cause the failure. How
+                            would you systematically debug it?
+                        </div>
+                        <div class="q-item">
+                            <strong>4. Millions of Student Records System Design:</strong> Design a system that stores
+                            millions of student records and allows users to quickly search for a student by ID, name, or
+                            email. What would you consider?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
