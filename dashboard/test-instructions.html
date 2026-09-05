@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment - Career Crunch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #213C51;
+            color: #EEEEEE;
+            min-height: 100vh;
+        }
+        .card-custom {
+            background-color: #464858;
+            border: 1px solid rgba(238, 238, 238, 0.1);
+            color: #EEEEEE;
+        }
+        .btn-theme-primary {
+            background-color: #6594B1;
+            color: #0F3040;
+            font-weight: 600;
+        }
+        .btn-theme-primary:hover {
+            background-color: #537d99;
+            color: #ffffff;
+        }
+        .timer-badge {
+            background-color: #DDAED3;
+            color: #0F3040;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        .form-select, .form-check-input {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="p-3 p-md-5">
+    <div class="container" style="max-width: 820px;">
+
+        <div class="mb-4">
+            <a href="./mock.html" class="btn btn-sm btn-outline-light">
+                <i class="bi bi-arrow-left me-1"></i> Back to Mock Interview
+            </a>
+        </div>
+
+        <!-- ================= 1. INSTRUCTIONS & SETUP VIEW ================= -->
+        <div id="instructionsCard" class="card card-custom p-4 p-md-5 rounded-4 shadow-lg">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h2 id="trackTitle" class="fw-bold text-white mb-0">Assessment Setup</h2>
+                <span id="domainBadge" class="badge rounded-pill px-3 py-2" style="background-color: #213C51; color: #6594B1; border: 1px solid #6594B1;">Domain: General</span>
+            </div>
+            <p id="trackDesc" class="lead text-white-50 mb-4"></p>
+
+            <h5 class="fw-bold text-white mb-2">Syllabus & Topics Covered:</h5>
+            <ul id="topicsList" class="mb-4 text-white-50" style="line-height: 1.9;"></ul>
+
+            <!-- Configurable Test Length -->
+            <div class="card p-3 rounded-3 mb-4" style="background-color: #213C51; border: 1px solid rgba(255,255,255,0.1);">
+                <label for="questionCountSelect" class="form-label fw-bold text-white mb-2">
+                    <i class="bi bi-sliders me-1 text-info"></i> Choose Number of Questions & Practical Duration:
+                </label>
+                <select id="questionCountSelect" class="form-select bg-dark text-white border-secondary">
+                    <option value="5" data-time="7">5 Questions — 7 Minutes (Quick Warmup)</option>
+                    <option value="10" data-time="15" selected>10 Questions — 15 Minutes (Standard Practice)</option>
+                    <option value="15" data-time="22">15 Questions — 22 Minutes (Comprehensive Drill)</option>
+                </select>
+                <small class="text-white-50 mt-2 d-block">
+                    Allocates roughly 1.4 to 1.5 minutes per question for problem comprehension and review.
+                </small>
+            </div>
+
+            <button id="startBtn" class="btn btn-lg btn-theme-primary w-100 py-3 rounded-3 shadow">
+                Start Assessment
+            </button>
+        </div>
+
+        <!-- ================= 2. ACTIVE TEST RUNNER VIEW ================= -->
+        <div id="quizCard" class="d-none">
+            <div class="d-flex justify-content-between align-items-center mb-4 p-3 card card-custom rounded-3 shadow-sm sticky-top" style="top: 1rem; z-index: 10;">
+                <div>
+                    <h5 id="quizHeaderTitle" class="mb-0 fw-bold text-white">Test In Progress</h5>
+                    <small id="quizProgressCount" class="text-white-50">Answer all questions</small>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="badge timer-badge px-3 py-2 rounded-pill shadow-sm" id="timerDisplay">15:00</span>
+                    <button class="btn btn-outline-warning btn-sm fw-bold px-3 py-2" id="earlySubmitBtn" type="button">
+                        Submit Early
+                    </button>
+                </div>
+            </div>
+
+            <form id="quizForm" class="d-flex flex-column gap-3">
+                <div id="questionsContainer" class="d-flex flex-column gap-3"></div>
+                <button type="submit" class="btn btn-lg btn-theme-primary w-100 py-3 rounded-3 shadow mt-3 mb-5">
+                    Finish & View Updated Progress
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        // Read Resume Data for Dynamic Topics
+        const resumeDataRaw = localStorage.getItem('careerCrunch_resumeData');
+        const resumeData = resumeDataRaw ? JSON.parse(resumeDataRaw) : null;
+
+        const params = new URLSearchParams(window.location.search);
+        const selectedTrackKey = params.get('track') === 'core' ? 'core' : 'reasoning';
+
+        // Bank of Reasoning Questions
+        const REASONING_BANK = [
+            { q: "1. Look at this series: 7, 10, 8, 11, 9, 12, ... What number should come next?", options: ["7", "10", "12", "13"], answer: 1 },
+            { q: "2. If all roses are flowers and some flowers fade quickly, which deduction is logically certain?", options: ["All roses fade quickly", "Some roses may fade quickly", "No roses fade quickly", "All flowers are roses"], answer: 1 },
+            { q: "3. A teammate strongly disagrees with your project approach in sprint planning. What is the most constructive response?", options: ["Ignore them and proceed", "Escalate immediately to management", "Listen to their reasoning, discuss trade-offs, and seek common ground", "Halt work until they concede"], answer: 2 },
+            { q: "4. If 'MAN' is coded as 'NBM' in a pattern, how would 'SKY' be coded?", options: ["TLZ", "TKZ", "RJZ", "TLX"], answer: 0 },
+            { q: "5. Find the odd one out: Apple, Orange, Tomato, Potato.", options: ["Apple", "Orange", "Tomato", "Potato"], answer: 3 },
+            { q: "6. A project deadline is shortened by two days. How do you prioritize?", options: ["Work 20 hours continuously", "Drop critical unit tests", "Re-evaluate deliverables with stakeholders and focus on core functional scope", "Tell team to ignore the revised deadline"], answer: 2 },
+            { q: "7. Pointing to a photograph, a man said, 'I have no brother, and that man's father is my father's son.' Whose photo was it?", options: ["His own", "His father's", "His son's", "His nephew's"], answer: 2 },
+            { q: "8. Statement: 'Most candidates cleared Round 1.' Inference: 'Round 1 was extremely easy.'", options: ["Definitely True", "Probably True", "Cannot be determined with certainty", "Definitely False"], answer: 2 },
+            { q: "9. Complete the analogy: Ocean : Water :: Glacier : ?", options: ["Mountain", "Ice", "Cold", "River"], answer: 1 },
+            { q: "10. In a team discussion, a junior engineer shares a valid idea that is being talked over. What should you do?", options: ["Stay silent to preserve meeting pace", "Interrupt politely to amplify their idea and give them the floor", "Wait until the meeting ends to console them", "Take their idea and repeat it as your own"], answer: 1 },
+            { q: "11. If South-East becomes North, and North-East becomes West, what will West become?", options: ["North-East", "South-East", "South-West", "North-West"], answer: 1 },
+            { q: "12. You discover an edge-case bug 1 hour before an assessment deployment. What is the ethical step?", options: ["Hide the bug and push anyway", "Notify lead/evaluator immediately with the impact and suggested mitigation", "Blame the QA team", "Turn off unit tests to bypass CI/CD"], answer: 1 },
+            { q: "13. Which word does NOT belong with the others: Unimportant, Trivial, Crucial, Insignificant?", options: ["Unimportant", "Trivial", "Crucial", "Insignificant"], answer: 2 },
+            { q: "14. A client requests an out-of-scope feature delivery tomorrow morning. The proper professional reply is:", options: ["'Yes, absolutely' without checking", "'No, we don't care'", "Explain capacity limits clearly and propose a realistic milestone schedule", "Ignore client emails"], answer: 2 },
+            { q: "15. Complete the sequence: 2, 6, 12, 20, 30, ?", options: ["40", "42", "44", "48"], answer: 1 }
+        ];
+
+        // Bank of Tech / Core Questions (Adaptable to Resume Domain)
+        function getCoreQuestions(domainTitle) {
+            const isNonTech = resumeData && resumeData.domain && !resumeData.domain.toLowerCase().includes('software') && !resumeData.domain.toLowerCase().includes('engineer') && !resumeData.domain.toLowerCase().includes('computer');
+
+            if (isNonTech) {
+                return [
+                    { q: `1. In ${domainTitle}, what is the foundational framework used to evaluate individual needs and milestone progress?`, options: ["Systematic Observation & Assessment Plans", "Arbitrary Scoring", "Unregulated Checklists", "Standardized Multiple Choice"], answer: 0 },
+                    { q: `2. What is the most critical compliance practice when handling sensitive records or client databases in ${domainTitle}?`, options: ["Storing plaintext on desktop", "Strict confidentiality and access-restricted logs", "Sharing credentials across team", "Disposing files in unmonitored bins"], answer: 1 },
+                    { q: "3. When supervising cross-functional volunteers or assistants, what delegation method yields maximum accountability?", options: ["Assuming they know what to do", "Setting clear SMART objectives and regular check-in checkpoints", "Micromanaging minute-by-minute", "Assigning tasks without training"], answer: 1 },
+                    { q: "4. In case management, how do you resolve resource conflicts between competing priority programs?", options: ["First come, first served blindly", "Needs-based triage and objective stakeholder impact analysis", "Canceling both programs", "Giving resources to the louder requester"], answer: 1 },
+                    { q: "5. What is the primary role of formative feedback during developmental or operational tracking?", options: ["Punitive documentation", "Continuous real-time adjustment and guided improvement", "Annual compensation calculation", "Filing regulatory penalties"], answer: 1 },
+                    { q: "6. How do you handle sudden resistance when introducing a new operational protocol to senior staff?", options: ["Force immediate compliance without discussion", "Engage with workshops, explain the 'why', and actively address friction points", "Abandon the protocol completely", "Exclude resistant staff from meetings"], answer: 1 },
+                    { q: "7. When drafting an intervention or program roadmap, what serves as the baseline benchmark?", options: ["Initial diagnostic assessment data", "Best-case assumptions", "Previous year's unverified estimates", "Vendor sales sheets"], answer: 0 },
+                    { q: "8. Effective conflict escalation management between clients and service coordinators requires:", options: ["Neutral de-escalation, active listening, and documented policy enforcement", "Taking immediate sides", "Ignoring client complaints", "Issuing public rebukes"], answer: 0 },
+                    { q: "9. What is the primary advantage of standardized digital records over fragmented physical files?", options: ["Zero maintenance needed forever", "Fast search retrieval, auditable access trails, and data consistency", "Immunity from human error", "Unlimited storage without backup"], answer: 1 },
+                    { q: "10. In professional service planning, what does 'KPI' measure?", options: ["Known Personal Identifiers", "Key Performance Indicators tracking progress toward targets", "Knowledge Protocol Index", "Key Project Incident"], answer: 1 },
+                    { q: "11. When coordinating multi-stakeholder initiatives, what is the best preventative strategy against scope creep?", options: ["Accepting all change requests", "Establishing a written charter with milestone sign-offs", "Refusing to communicate changes", "Postponing start dates indefinitely"], answer: 1 },
+                    { q: "12. Professional ethics in case management require reporting compliance irregularities to:", options: ["Public social media", "Designated oversight officers through formal reporting channels", "Anonymous forums", "External competitors"], answer: 1 },
+                    { q: "13. In resource allocation, a 'bottleneck' refers to:", options: ["The stage with the lowest capacity that restricts overall throughput", "The highest budget item", "The newest employee", "The final celebration phase"], answer: 0 },
+                    { q: "14. What is the hallmark of evidence-based practice?", options: ["Tradition and habit", "Integrating verified empirical research with practical expertise", "Personal intuition alone", "Trial-and-error without metrics"], answer: 1 },
+                    { q: "15. How should a program coordinator measure long-term client or student outcome success?", options: ["Single-day exit interview", "Longitudinal tracking against predefined outcome milestones", "Total number of emails exchanged", "Subjective impressions"], answer: 1 }
+                ];
+            }
+
+            // Default Technical Core Question Bank
+            return [
+                { q: "1. What is the average search time complexity in a balanced Binary Search Tree (BST)?", options: ["O(1)", "O(n)", "O(log n)", "O(n log n)"], answer: 2 },
+                { q: "2. Which of the following is NOT an ACID property in relational DBMS transactions?", options: ["Atomicity", "Consistency", "Isolation", "Dependency"], answer: 3 },
+                { q: "3. What condition occurs when two or more processes wait endlessly for resources held by each other?", options: ["Starvation", "Deadlock", "Paging Fault", "Race Condition"], answer: 1 },
+                { q: "4. Which OOP principle allows different classes to implement methods with the same name but distinct behaviors?", options: ["Encapsulation", "Abstraction", "Polymorphism", "Inheritance"], answer: 2 },
+                { q: "5. Which data structure operates on a First-In, First-Out (FIFO) discipline?", options: ["Stack", "Queue", "Max Heap", "Graph"], answer: 1 },
+                { q: "6. In SQL, which clause is used to filter records returned by an aggregate GROUP BY query?", options: ["WHERE", "HAVING", "ORDER BY", "DISTINCT"], answer: 1 },
+                { q: "7. What is the primary advantage of Virtual Memory in operating systems?", options: ["Increases CPU clock rate", "Allows execution of processes larger than physical RAM", "Guarantees zero page faults", "Eliminates cache misses"], answer: 1 },
+                { q: "8. What is the worst-case time complexity of QuickSort when a poor pivot is chosen?", options: ["O(n log n)", "O(n)", "O(n^2)", "O(log n)"], answer: 2 },
+                { q: "9. Which normalization form removes transitive functional dependencies (X -> Y and Y -> Z)?", options: ["1NF", "2NF", "3NF", "BCNF"], answer: 2 },
+                { q: "10. In Computer Networks, what protocol provides reliable, connection-oriented byte-stream delivery?", options: ["UDP", "TCP", "ICMP", "IP"], answer: 1 },
+                { q: "11. What is the difference between a process and a thread?", options: ["Threads share address space of parent process; processes have isolated memory", "Processes share stack; threads do not", "Threads are hardware only", "Processes cannot execute code"], answer: 0 },
+                { q: "12. Which data structure is utilized internally to evaluate mathematical postfix expressions?", options: ["Queue", "Stack", "B-Tree", "Linked List"], answer: 1 },
+                { q: "13. What does an index on a database table primarily optimize?", options: ["Data write throughput", "Data read/query retrieval speed", "Disk space utilization", "Backup compression"], answer: 1 },
+                { q: "14. What design pattern ensures a class has only one instance and provides a global access point?", options: ["Factory", "Observer", "Singleton", "Adapter"], answer: 2 },
+                { q: "15. How can a cycle be detected in a Singly Linked List with O(1) auxiliary space?", options: ["Hash table of visited nodes", "Floyd's Tortoise and Hare (two-pointer) algorithm", "Sorting the addresses", "Reversing the entire list"], answer: 1 }
+            ];
+        }
+
+        // Setup assessment metadata
+        let activeQuestions = [];
+        let activeTopics = [];
+        let trackTitle = "";
+        let trackDesc = "";
+        let domainLabel = (resumeData && resumeData.domain) ? resumeData.domain : "General Core";
+
+        document.getElementById('domainBadge').textContent = `Domain: ${domainLabel}`;
+
+        if (selectedTrackKey === 'reasoning') {
+            trackTitle = "Soft Skills & Logical Reasoning Assessment";
+            trackDesc = "Measure analytical problem solving, logical deductions, situational workplace judgment, and interpersonal ethics.";
+            activeTopics = [
+                "Numerical Patterns & Deductive Logic",
+                "Situational Workplace Ethics & Team Collaboration",
+                "Verbal Reasoning & Inference Testing",
+                "Professional De-escalation & Communication"
+            ];
+            activeQuestions = REASONING_BANK;
+        } else {
+            // Core Assessment tailored to resume if available
+            trackTitle = `${domainLabel} — Core Subject Assessment`;
+            trackDesc = "Evaluate foundational principles, domain methodology, operational compliance, and technical proficiency.";
+            
+            if (resumeData && Array.isArray(resumeData.topicScores) && resumeData.topicScores.length > 0) {
+                activeTopics = resumeData.topicScores.map(t => t.topic);
+            } else {
+                activeTopics = [
+                    "Data Structures & Algorithmic Complexity",
+                    "Database Management Systems & SQL",
+                    "Operating Systems & Process Scheduling",
+                    "Object-Oriented Programming (OOP)"
+                ];
+            }
+            activeQuestions = getCoreQuestions(domainLabel);
+        }
+
+        // Populate DOM instructions
+        document.getElementById('trackTitle').textContent = trackTitle;
+        document.getElementById('trackDesc').textContent = trackDesc;
+        const topicsList = document.getElementById('topicsList');
+        activeTopics.forEach(t => {
+            const li = document.createElement('li');
+            li.innerHTML = `<strong class="text-white">${t}</strong>`;
+            topicsList.appendChild(li);
+        });
+
+        // Test variables
+        let selectedQuestions = [];
+        let totalTimeSeconds = 15 * 60;
+        let remainingSeconds = 15 * 60;
+        let timerInterval = null;
+
+        function startTimer() {
+            const timerElem = document.getElementById('timerDisplay');
+            timerInterval = setInterval(() => {
+                remainingSeconds--;
+                const mins = Math.floor(remainingSeconds / 60);
+                const secs = remainingSeconds % 60;
+                timerElem.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+                if (remainingSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Assessment time is up! Submitting your answers automatically.");
+                    handleSubmit();
+                }
+            }, 1000);
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = '';
+            document.getElementById('quizHeaderTitle').textContent = trackTitle;
+            document.getElementById('quizProgressCount').textContent = `${selectedQuestions.length} Questions (${Math.round(totalTimeSeconds/60)} Mins)`;
+
+            selectedQuestions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'card card-custom p-4 rounded-3 shadow-sm';
+                card.innerHTML = `
+                    <h6 class="fw-bold mb-3 text-white">${idx + 1}. ${q.q.replace(/^\d+\.\s*/, '')}</h6>
+                    <div class="d-flex flex-column gap-2">
+                        ${q.options.map((opt, optIdx) => `
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q_${idx}" id="q_${idx}_${optIdx}" value="${optIdx}">
+                                <label class="form-check-label text-white-50" for="q_${idx}_${optIdx}">
+                                    ${opt}
+                                </label>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function handleSubmit() {
+            clearInterval(timerInterval);
+
+            // Calculate Score
+            let correct = 0;
+            selectedQuestions.forEach((q, idx) => {
+                const selected = document.querySelector(`input[name="q_${idx}"]:checked`);
+                if (selected && parseInt(selected.value, 10) === q.answer) {
+                    correct++;
+                }
+            });
+
+            const scorePercent = Math.round((correct / selectedQuestions.length) * 100);
+
+            // Fetch and update localStorage
+            let stored = localStorage.getItem('careerCrunch_resumeData');
+            let data = stored ? JSON.parse(stored) : {};
+
+            // 1. Increment Quiz Count
+            data.quizCount = (data.quizCount || 0) + 1;
+
+            // 2. Record Score in Trajectory History
+            if (!Array.isArray(data.scoreTrajectory)) {
+                const initialScore = data.scoreNum || 65;
+                data.scoreTrajectory = [initialScore];
+            }
+            data.scoreTrajectory.push(scorePercent);
+
+            // 3. Update category scores
+            if (selectedTrackKey === 'reasoning') {
+                data.softSkillsScore = scorePercent;
+            } else {
+                data.coreScore = scorePercent;
+                // If dynamic topic scores exist, update them with active mastery
+                if (Array.isArray(data.topicScores)) {
+                    data.topicScores.forEach(t => {
+                        t.score = Math.min(100, Math.round((t.score + scorePercent) / 2));
+                    });
+                }
+            }
+
+            localStorage.setItem('careerCrunch_resumeData', JSON.stringify(data));
+
+            // Redirect back to Progress page
+            window.location.href = './progress.html';
+        }
+
+        // Start Test Button
+        document.getElementById('startBtn').addEventListener('click', () => {
+            const selectElem = document.getElementById('questionCountSelect');
+            const count = parseInt(selectElem.value, 10);
+            const minutes = parseInt(selectElem.options[selectElem.selectedIndex].getAttribute('data-time'), 10);
+
+            totalTimeSeconds = minutes * 60;
+            remainingSeconds = totalTimeSeconds;
+
+            // Slice chosen number of questions
+            selectedQuestions = activeQuestions.slice(0, count);
+
+            document.getElementById('instructionsCard').classList.add('d-none');
+            document.getElementById('quizCard').classList.remove('d-none');
+
+            renderQuestions();
+            startTimer();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Early Submit Button
+        document.getElementById('earlySubmitBtn').addEventListener('click', () => {
+            if (confirm("Are you ready to submit your test and sync results with your Progress Dashboard?")) {
+                handleSubmit();
+            }
+        });
+
+        // Form Submit
+        document.getElementById('quizForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            handleSubmit();
+        });
+    </script>
+</body>
+</html>
